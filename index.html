@@ -2,296 +2,228 @@
 <html lang="en">
 
 <head>
-  <title>Manipulating Arrays Solution</title>
+  <meta charset="UTF-8">
+  <style>
+    /* 👉 Task 1- Apply the reset found on this page: https://www.joshwcomeau.com/css/custom-css-reset/ */
+ /*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+/*
+  8. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+  </style>
+  <style>
+    /* 👉 Task 2- Target the body element.
+    Apply a font family of Arial to the body element.
+    The font property is inherited by descendant (nested) elements. */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* 👉 Task 3- Target the element with id headerTop.
+    Apply white color to the text, some padding using px or rem units, and a dark background color. */
+    #headerTop {
+      background-color: #176bad;
+      color: white;
+      padding: 0.5rem;
+    }
+    /* 👉 Task 4- Target the divs that are directly nested underneath the id headerTop.
+    Make them display as inline block, instead of block.
+    This will make them render on the same line. */
+    #headerTop > div {
+      display: inline-block;
+    }
+
+
+    /* 👉 Task 5- Target the spans that are nested inside the id headerTop.
+    Make them have some margin on the right.
+    This will prevent the spans from crashing against one another. */
+    #headerTop span {
+      margin-right: 0.5rem;
+    }   
+    /* 👉 Task 6- Target the first span nested inside the element with id headerTop.
+    Make it have a font weight of bold, and transform the text to uppercase. */
+    .logo {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    /* 👉 Task 7- Target the id headerBottom.
+    Give it a bottom border of 1 pixel, solid gray, and a little bit of padding using px or rem units. */
+    #headerBottom {
+      border-bottom: 1px solid gray; 
+      padding: 0.5rem;     
+    }
+
+    /* 👉 Task 8- Target the divs that are nested directly inside the element with id headerBottom.
+    Make them display as inline block, instead of block.
+    This will cause them to render on the same line.
+    You can consolidate this rule with the one on step. 4 */
+    #headerBottom > div {
+      display: inline-block;
+    }
+
+    /* 👉 Task 9- Target the "Compose" button, although note it's a div instead an actual button.
+    Give it color, bold text, background, padding, border radius, margin right, and a cursor of pointer. */
+    .blue-btn {
+      color: white;
+      background-color: #176bad;
+      padding: 0.4rem;
+      border-radius: 4px;
+      margin-right: 1rem;
+      font-weight: bold;
+    }
+
+    /* 👉 Task 10- Research how to remove all the default styling of button elements.
+    Target the button elements inside the element with id headerBottom.
+    Remove all their styling, give them a bit of margin to the right, and a cursor of pointer. */
+    #headerBottom button {
+      padding: 0;
+      border: none;
+      background: none;
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+
+    /* 👉 Task 11- Target the button element inside the id headerBottom that has a class of active
+    Make the font weight be bolder, and add a bottom border of 2 pixels solid color (you choose the color).
+    Add the class name to the "All mail" button. */
+    #headerBottom button.active {
+      border-bottom: 2px solid #176bad; 
+      font-weight: bold;     
+    }
+
+
+    /* 👉 Task 12- Target all divs directly nested inside elements with a class of email,
+    and make them display as inline-block elements.
+    This will make each email render all its details in the same line*/
+    .email>div {
+      display: inline-block;
+    }
+
+    /* 👉 Task 13- Target the elements with a class of email.
+    Give them some padding, bigger padding to the left, and a bottom border of very light grey. */
+    .email {
+      padding: 0.4rem;
+      padding-left: 1rem;
+      border-bottom: 1px solid #c5c5c5;
+    }
+
+    /* 👉 Task 14- Target each div inside the element with a class of email.
+    Make the email author and the email subject take 35% of the width of the parent element.
+    Make the check, the date and the size take up 8% of the width of the parent element.
+    This will arrange the details in visible columns. */
+    .email-name, .email-subject {
+      width: 35%;
+
+    }
+    .email-check, .email-date , .email-size {
+      width: 8%;
+    }
+
+    /* 👉 Task 15- Target the second email and have its font weight be bold.
+    This will make it look "unread". */
+    .email:nth-child(2) {
+      font-weight: bold;
+      
+    }
+
+    /* Well done! Check the design file to make sure you are close enough. */
+
+  </style>
+  <title>Document</title>
 </head>
 
 <body>
-  <h1>Manipulating Arrays Solution</h1>
-  <p>Please load this file in VSCode and Chrome, and open the Console in Chrome Dev Tools.</p>
-  <p>Work through the challenges found inside the script tag in this document,
-    until the Console reports all tests passing.</p>
+  <div></div>
+    <header>
+      <div id="headerTop">
+        <div class="inline-container">
+          <span class="logo">Super Mail</span>
+          <span>Jess</span>
+        </div>
+        <div class="inline-container">
+          <input type="text" placeholder="Search Mail" />
+        </div>
+      </div>
+      <div id="headerBottom">
+        <div class="blue-btn">Compose</div>
+        <div>
+          <button class="active">All mail</button>
+          <button>Unread</button>
+          <button>Pinned</button>
+          <button>VIPs</button>
+        </div>
+      </div>
+    </header>
+    <main id="emails">
+      <div class="email">
+        <div class="email-check"><input type="checkbox" /></div>
+        <div class="email-name">Carol Shaw</div>
+        <div class="email-subject">Your login link</div>
+        <div class="email-date">Feb 28</div>
+        <div class="email-size">16 KB</div>
+      </div>
+    </main>
+  </div>
 
   <script>
-    // In CHALLENGES 1-9 you will flesh out some functions.
-
-    // To do this, translate each 🧠 set of instructions into a working function.
-    // ❗ Functions are scaffolded for you, but some of them might be missing their parameters.
-    // ❗ Watch the Guided Project to learn proper debugging technique.
-    // ❗ The first challenge is _partially_ done for you:
-
-    // 👉 CHALLENGE 1
-    // 🧠 The function sumNumsFor takes an array of supposed numbers and adds them up, returning the total sum.
-    // 🧠 If the function receives an empty array, the returned value ought to be 0.
-    // 🧠 If an element in the array happens to not be a number, it is ignored.
-    // 🧠 However, if the number 13 is encountered, sumNumsFor returns the string "I'm too superstitious!"
-    // 🧠 Examples of usage:
-    // sumNumsFor([1, 2, 3]) // should return 6
-    // sumNumsFor([1, 2, 13]) // should return "I'm too superstitious!"
-    // ❗ Notes:
-    // 🧠 There are many ways to solve this, but practice using a for loop to iterate over the array.
-    // 🧠 As you have done in the past, declare a variable before you start looping, to accumulate the result.
-    function sumNumsFor(nums) {
-      let result = 0
-      for (let idx = 0; idx < nums.length; idx++) {
-       let element = nums[idx]
-       if (typeof element === 'number') {
-        if (element === 13) {
-          return "I'm too superstitious!"
-       }
-       result += element
-    }
-  }
-
-  return result
-
-}
-
-    // 👉 CHALLENGE 2
-    // 🧠 The function stripVowels takes a string, strips all lowcase vowel letters (a,e,i,o,u) from it and returns it.
-    // 🧠 Example of usage:
-    // stripVowels('Lady Gaga') // should return 'Ldy Gg'
-    // ❗ Notes:
-    // 🧠 There are many ways to solve this, but practice using a for loop to iterate over the characters of the string.
-    function stripVowels(str) {
-      const split = str.split('')
-      const result = []
-      for (let idx = 0; idx < split.length; idx++) {
-        const char = split[idx]
-        if (char !== 'a' && char !== 'e' && char !== 'i' && char !== 'o' && char !== 'u') {
-          result.push(char)
-        }
-      }
-      return result.join('')
-
-    }
-
-    // 👉 CHALLENGE 3
-    // 🧠 Reimplement sumNumsFor using a while loop instead of a for loop.
-    // 🧠 Examples of usage:
-    // sumNumsWhile([1, 2, 3]) // should return 6
-    // sumNumsWhile([1, 2, 13]) // should return "I'm too superstitious!"
-    function sumNumsWhile(nums) {
-      let result = 0
-      let idx = 0
-      while (idx < nums.length) {
-        let elem = nums[idx]
-        if(typeof elem === 'number') {
-          if(elem === 13) {
-            return "I'm too superstitious!" 
-          }
-          result += elem
-        }
-        idx++
-      }
-      return result
-
-
-    }
-
-    // 👉 CHALLENGE 4
-    // 🧠 The function fightMonsters takes an integer (lifePoints) as its argument, and returns a string.
-    // 🧠 Inside the function there will be several rounds of monster-fighting.
-    // 🧠 We are alive to fight as long as lifePoints is bigger than zero.
-    // 🧠 In the first round, 1 point will be substracted from the initial lifePoints.
-    // 🧠 In the second round, 2 points will be substracted from the remaining lifePoints, and so on.
-    // 🧠 Eventually a string is returned from the function, in the format "You died in round 5".
-    // 🧠 That would be the round when you lost all lifePoints.
-    // 🧠 Examples of usage:
-    // fightMonsters(1) // should return "You died in round 1"
-    // fightMonsters(2) // should return "You died in round 2"
-    // fightMonsters(3) // should return "You died in round 2"
-    // fightMonsters(10) // should return "You died in round 4"
-    // ❗ Notes:
-    // 🧠 There are many ways to solve this, but practice using a while loop.
-    // 🧠 Work out using pen and paper how the round number and the lifePoints change after each round.
-    // 🧠 As long as there are lifePoints, decrease lifePoints by round number, and increase round number by one.
-    function fightMonsters(lifePoints) {
-      let round = 1
-      while (lifePoints > 0) {
-        lifePoints -= round
-        if (lifePoints <= 0) {
-          return `You died in round ${round}`
-        }
-        round++
-      }
-
-    }
-
-    // 👉 CHALLENGE 5
-    // 🧠 The function findEvenNums takes an array of integers as its argument.
-    // 🧠 It returns a new array containing the even numbers found in the original array, in the same order.
-    // 🧠 Examples of usage:
-    // findEvenNums([0, 1, 2, 3, 4]) // should return [0, 2, 4]
-    // ❗ Notes:
-    // 🧠 Use any kind of loop you'd like and the push method to populate the array of even numbers.
-    function findEvenNums(ints) {
-      let evens = []
-      for (let idx in ints) {
-        let num = ints[idx]
-        if (num % 2 === 0) {
-          evens.push(num)
-        }
-      }
-      return evens
-
-    }
-
-    // 👉 CHALLENGE 6
-    // 🧠 The function separateAges takes an array of integers (ages) as its argument.
-    // 🧠 It returns a new array containing two elements, which happen to also be arrays.
-    // 🧠 The first subarray contains the ages under 21, and the second subarray the ages equal or older than 21.
-    // 🧠 Ages in the subarrays should appear in the same order they appeared in the original array.
-    // 🧠 Examples of usage:
-    // separateAges([31, 12, 25, 65, 84, 20]) // should return [[12, 20], [31, 25, 65, 84]]
-    function separateAges(ages) {
-      let under21 = []
-      let others = []
-
-      for (let idx = 0; idx < ages.length; idx++) {
-        let age = ages[idx]
-        if (age < 21) {
-          under21.push(age)
-        } else {
-          others.push(age)
-        }
-      }
-      return [under21, others]
-
-    }
-
-    // 👉 CHALLENGE 7
-    // 🧠 The function headAndTail takes an array as its argument.
-    // 🧠 It returns an object with two properties: "head" and "tail".
-    // 🧠 The "head" prop contains the first element of the array.
-    // 🧠 The "tail" prop contains an array holding the elements of the array after the first one.
-    // 🧠 Examples of usage:
-    // headAndTail([1, 2, 3]) // should return { head: 1, tail: [2, 3] }
-    function headAndTail(arr) {
-      let head = arr[0]
-      let tail = arr.slice(1)
-      return {head, tail}
-
-    }
-
-    // 👉 CHALLENGE 8
-    // 🧠 The function nestedLoops takes an array of strings as its argument.
-    // 🧠 It returns a new array of strings which are the same as the original ones except that the vowels are capitalized.
-    // 🧠 Examples of usage:
-    // nestedLoops(['hello', 'goodbye']) // should return ['hEllO', 'gOOdbyE']
-    // ❗ Notes:
-    // 🧠 To capitalize a string you can use its toUpperCase method: "a".toUpperCase() returns "A"
-    function nestedLoops(strings) {
-      let result = []
-
-      for (let idx in strings) {
-
-        let word = strings[idx]      
-        let modifiedWord = ''
-        for (let idx in word) {
-          let char = word[idx]
-          if (char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u') {
-            let upperCased = char.toUpperCase()
-            modifiedWord += upperCased
-          } else {
-            modifiedWord += char
-          }
-
-        }
-
-        result.push(modifiedWord)
-      }
-
-      return result 
-    }
-
-    // 👉 CHALLENGE 9
-    // 🧠 The function crazyTrimmer takes an array as its argument.
-    // 🧠 If the array has an even number of elements, the function returns it minus its last element.
-    // 🧠 If the number of elements is odd, the function returns the array minus its first and last elements.
-    // 🧠 Examples of usage:
-    // crazyTrimmer(['a', 'b', 'c']) // should return ['b']
-    // crazyTrimmer(['a', 'b', 'c', 'd']) // should return ['a', 'b', 'c']
-    // ❗ Notes:
-    // 🧠 Practice using pop and slice.
-    // 🧠 Note that pop modifies the original array in place and returns the "popped" element, whereas slice gives us a brand new array.
-    function crazyTrimmer(arr) {
-      if (arr.length % 2 === 0) { // if even
-         arr.pop()
-         return arr
-      } else {
-        return arr.slice(1, arr.length - 1)
-      }
-
-    }
-
-    // 🧪 TESTS, do not work below this line
-    // 🧪 TESTS, do not work below this line
-    // 🧪 TESTS, do not work below this line
-    runTests('CHALLENGE 1 - sumNumsFor', sumNumsFor, [
-      [[[1, 2, 3]], 6],
-      [[[]], 0],
-      [[[1, 2, "x", 4]], 7],
-      [[[1, 2, 13, 3]], "I'm too superstitious!"],
-    ])
-    runTests('CHALLENGE 2 - stripVowels', stripVowels, [
-      [['aeiou'], ''],
-      [['xyz'], 'xyz'],
-      [['aeiouAEIOU'], 'AEIOU'],
-      [['precaution'], 'prctn'],
-    ])
-    runTests('CHALLENGE 3 - sumNumsWhile', sumNumsWhile, [
-      [[[1, 2, 3]], 6],
-      [[[]], 0],
-      [[[1, 2, "x", 4]], 7],
-      [[[1, 2, 13, 3]], "I'm too superstitious!"],
-    ])
-    runTests('CHALLENGE 4 - fightMonsters', fightMonsters, [
-      [[1], 'You died in round 1'],
-      [[2], 'You died in round 2'],
-      [[3], 'You died in round 2'],
-      [[10], 'You died in round 4'],
-      [[100], 'You died in round 14'],
-    ])
-    runTests('CHALLENGE 5 - findEvenNums', findEvenNums, [
-      [[[]], []],
-      [[[0]], [0]],
-      [[[1, 0, 5, 2, 4]], [0, 2, 4]],
-    ])
-    runTests('CHALLENGE 6 - separateAges', separateAges, [
-      [[[31, 12, 25, 65, 84, 20]], [[12, 20], [31, 25, 65, 84]]],
-      [[[1, 2, 3]], [[1, 2, 3], []]],
-      [[[21, 22, 23]], [[], [21, 22, 23]]],
-    ])
-    runTests('CHALLENGE 7 - headAndTail', headAndTail, [
-      [[[1, 2, 3]], { head: 1, tail: [2, 3] }],
-      [[["a", "b", "c"]], { head: "a", tail: ["b", "c"] }],
-    ])
-    runTests('CHALLENGE 8 - nestedLoops', nestedLoops, [
-      [[['aeiou', 'xyz']], ['AEIOU', 'xyz']],
-      [[['foo', 'bar', 'baz']], ['fOO', 'bAr', 'bAz']],
-    ])
-    runTests('CHALLENGE 9 - crazyTrimmer', crazyTrimmer, [
-      [[[1, 2, 3]], [2]],
-      [[[1, 2]], [1]],
-      [[[1, 2, 3, 4]], [1, 2, 3]],
-      [[[1, 2, 3, 4, 5]], [2, 3, 4]],
-    ])
-    function runTests(testName, func, tests) {
-      let results = []
-      tests.forEach(test => {
-        const argsList = test[0]
-        const expected = JSON.stringify(test[1])
-        const actual = JSON.stringify(func.apply(null, JSON.parse(JSON.stringify(argsList))))
-        results.push([argsList, expected, actual])
-      })
-      console.log('\n' + testName)
-      if (results.every(result => result[1] === result[2])) console.log('\t✅ All tests pass')
-      else results.forEach((result, idx) => {
-        if (result[1] === result[2]) console.log(`\t✅ Test ${idx + 1} passes`)
-        else console.log(`\t❌ Test ${idx + 1} fails: ${func.name}(${result[0]
-          .map(JSON.stringify)}) should return ${result[1]} but returns ${result[2]}`)
-      })
-    }
+    // ❗ Note: do not change ids or class names inside the main element
+    // or the following code to programmatically add emails will stop working
+    const emailData = [
+      { name: 'Ada Lovelace', subject: 'A new device is using your account', date: 'Feb 28', size: '2 KB' },
+      { name: 'Grace Hopper', subject: 'Undelivered mail returned to sender', date: 'Feb 27', size: '6 KB' },
+      { name: 'Carol Shaw', subject: 'Approve sign-in', date: 'Feb 25', size: '14 KB' },
+      { name: 'Edith Clarke', subject: 'Fwd: Invoice', date: 'Feb 24', size: '33 KB' },
+    ]
+    emailData.forEach(email => {
+      const clone = emails.querySelector('.email').cloneNode(true)
+      clone.querySelector('.email-name').textContent = email.name
+      clone.querySelector('.email-subject').textContent = email.subject
+      clone.querySelector('.email-date').textContent = email.date
+      clone.querySelector('.email-size').textContent = email.size
+      emails.append(clone)
+    })
   </script>
 </body>
 
